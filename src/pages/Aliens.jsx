@@ -1,32 +1,48 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
 import FormAlien from "../components/FormAlien";
+import { useAuth } from "../contexts/AuthContext";
+import api from "../services/api";
 
-const url = "https://api.serratec.mwmsoftware.com/aliens";
+const url = "/aliens";
 
 function Aliens() {
-
+  const { nomeUsuario } = useAuth();
   const [aliens, setAliens] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [mensagem, setMensagem] = useState("");
+  const [modalAberto, setModalAberto] = useState(false);
   const [formAlien, setFormAlien] = useState({
-    "nome": "string",
-    "especie": "string",
-    "planeta": "string",
-    "periculosidade": 10,
-    "descricao": "string"
+    nome: "",
+    especie: "",
+    planeta: "",
+    periculosidade: 1,
+    descricao: "",
   });
 
-  // Carrega a lista automaticamente ao montar o componente
-  useEffect(() => {
-    buscarAliensComAxios();
-  }, []);
+  function limparFormulario() {
+    setFormAlien({
+      nome: "",
+      especie: "",
+      planeta: "",
+      periculosidade: 1,
+      descricao: "",
+    });
+  }
+
+  function fecharModal() {
+    setModalAberto(false);
+    limparFormulario();
+  }
 
   async function buscarAliensComAxios() {
     try {
-      const resposta = await axios.get(url);
+      setLoading(true);
+      const resposta = await api.get(url);
       setAliens(resposta.data);
     } catch (error) {
       console.error("Erro ao buscar aliens com axios:", error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -35,92 +51,75 @@ function Aliens() {
     setMensagem("");
 
     try {
-      const resposta = await axios.post(url, formAlien);
-      // Atualiza a lista local adicionando o novo registro retornado pela API
+      const resposta = await api.post(url, formAlien);
       setAliens((listaAtual) => [...listaAtual, resposta.data]);
-
-      // Limpa ou reseta o formulário após o sucesso
-      setFormAlien({
-        nome: "",
-        especie: "",
-        planeta: "",
-        periculosidade: 0,
-        descricao: ""
-      });
-
-      setMensagem(">>> REGISTRO ADICIONADO AO BANCO DE DADOS COM SUCESSO.");
+      limparFormulario();
+      setModalAberto(false);
+      setMensagem("Alien cadastrado com sucesso!");
+      
     } catch (error) {
       console.error("Erro ao cadastrar alien:", error);
-      setMensagem(">>> ERRO CRÍTICO: FALHA AO TRANSMITIR DADOS DE CADASTRO.");
+      setMensagem("Erro ao cadastrar alien.");
     }
   }
 
-  const formatarDado = (dado, fallback) => {
-    return dado === 'string' || !dado ? fallback : dado;
-  };
+  useEffect(() => {
+    buscarAliensComAxios();
+  }, []);
 
   return (
-    <div className="radar-panel">
-      {/* Seção do Formulário de Cadastro */}
-      <section style={{ marginBottom: '3rem' }}>
-        <h2 className="terminal-title">// INSERIR NOVA ASSINATURA BIOLÓGICA</h2>
-        <FormAlien
-          formAlien={formAlien}
-          setFormAlien={setFormAlien}
-          cadastrarAlien={cadastrarAlien}
-        />
-        {mensagem && (
-          <p style={{
-            marginTop: '1rem',
-            color: mensagem.includes('ERRO') ? 'var(--alert-red)' : 'var(--neon-green)',
-            fontSize: '0.85rem',
-            fontWeight: 'bold'
-          }}>
-            {mensagem}
-          </p>
-        )}
-      </section>
+    <section>
+      <h1>Aliens</h1>
+      {nomeUsuario && <p className="usuario-logado">Olá, {nomeUsuario}</p>}
 
-      {/* Seção da Tabela do Radar */}
-      <section>
-        <h2 className="terminal-title">// EXTRASOLARES REGISTRADOS: {aliens.length}</h2>
+      <button
+        className="open-modal-button"
+        onClick={() => setModalAberto(true)}
+        type="button"
+      >
+        Cadastrar alien
+      </button>
 
-        {aliens.length === 0 ? (
-          <div className="feedback-empty">SINAL ESTÁVEL: NENHUM ORGANISMO NO PERÍMETRO.</div>
-        ) : (
-          <div className="table-wrapper">
-            <table className="cyber-table">
-              <thead>
-                <tr>
-                  <th>CÓDIGO ID</th>
-                  <th>ASSINATURA / NOME</th>
-                  <th>CLASSIFICAÇÃO BIOLÓGICA</th>
-                  <th>NÍVEL DE PERICULOSIDADE</th>
-                </tr>
-              </thead>
-              <tbody>
-                {aliens.map(alien => (
-                  <tr key={alien.id}>
-                    <td className="tech-id">#{alien.id}</td>
-                    <td className="tech-name">
-                      {formatarDado(alien?.nome, 'NOME DESCONHECIDO')}
-                    </td>
-                    <td>
-                      {formatarDado(alien?.especie, 'ESPÉCIE NÃO CATALOGADA')}
-                    </td>
-                    <td>
-                      <span className={`badge-perigo ${alien.periculosidade > 7 ? 'alerta-maximo' : ''}`}>
-                        NÍVEL {alien?.periculosidade || '0'}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      {modalAberto && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <FormAlien
+              cadastrarAlien={cadastrarAlien}
+              fecharModal={fecharModal}
+              formAlien={formAlien}
+              setFormAlien={setFormAlien}
+            />
           </div>
-        )}
-      </section>
-    </div>
+        </div>
+      )}
+
+
+      {mensagem && <p className="mensagem">{mensagem}</p>}
+{loading ? (
+        <p>Carregando aliens...</p>
+      ) : (
+        <div className="alien-list">
+          {aliens.map((alien) => (
+            <article className="alien-card" key={alien.id}>
+              <h3>
+                {alien?.nome === "string" ? "Nome não disponível" : alien?.nome}
+            </h3>
+            <p>
+              <strong>Espécie:</strong> {alien?.especie}
+            </p>
+            <p>
+              <strong>Planeta:</strong> {alien?.planeta}
+            </p>
+            <p>
+              <strong>Periculosidade:</strong> {alien?.periculosidade}
+            </p>
+            <p>
+              <strong>Descrição:</strong> {alien?.descricao}
+            </p>
+          </article>
+        ))}
+      </div>)}
+    </section>
   );
 }
 
