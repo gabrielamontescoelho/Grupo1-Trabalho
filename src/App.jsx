@@ -1,122 +1,79 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { Link, useNavigate, useLocation } from "react-router";
+import { useAuth } from "./contexts/AuthContext";
+import AppRouter from "./router";
+import './style.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Consumindo o contexto de autenticação
+  const { estaAutenticado, logout } = useAuth();
+
+  const isActive = (path) => location.pathname === path ? 'active-link' : '';
+
+  // Função para deslogar do sistema
+  async function sair() {
+    await logout();
+    navigate("/login");
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="container">
+      {/* CABEÇALHO GLOBAL:
+        Fica fixo no topo. O usuário sempre vai ver o título e o menu.
+      */}
+      <header>
+        <h1>SISTEMA DE MONITORAMENTO EXTRATERRESTRE</h1>
+        <p className="text-secondary">Radar tático de contenção e análise biológica da órbita.</p>
 
-      <div className="ticks"></div>
+        {/* Menu de Navegação Tático */}
+        <nav className="cyber-nav" style={{ marginTop: '2rem', display: 'flex', gap: '1.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+          <Link to="/" className={`nav-link ${isActive('/')}`}>[ INÍCIO ]</Link>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+          {/* ÁREA RESTRITA: Só renderiza os links se o usuário estiver logado */}
+          {estaAutenticado && (
+            <>
+              <Link to="/planetas" className={`nav-link ${isActive('/planetas')}`}>[ CARTOGRAFIA DE PLANETAS ]</Link>
+              <Link to="/aliens" className={`nav-link ${isActive('/aliens')}`}>[ RADAR (ALIENS) ]</Link>
+            </>
+          )}
+
+          {/* CONTROLE DE SESSÃO: Alterna entre os botões de Login/Cadastro e o botão de Sair */}
+          {estaAutenticado ? (
+            <button
+              type="button"
+              onClick={sair}
+              className="nav-link"
+              style={{
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                color: 'var(--alert-red)',
+                fontWeight: 'bold'
+              }}
+            >
+              [ DESCONECTAR ]
+            </button>
+          ) : (
+            <>
+              <Link to="/login" className={`nav-link ${isActive('/login')}`}>[ LOGIN ]</Link>
+              <Link to="/cadastro" className={`nav-link ${isActive('/cadastro')}`}>[ NOVO REGISTRO ]</Link>
+            </>
+          )}
+        </nav>
+      </header>
+
+      {/* ÁREA DINÂMICA (O miolo da aplicação):
+        O AppRouter renderiza a página correspondente à rota atual da URL.
+      */}
+      <main style={{ marginTop: '2.5rem' }}>
+        <AppRouter />
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
