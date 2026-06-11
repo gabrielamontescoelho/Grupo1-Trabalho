@@ -104,3 +104,4 @@ function Planetas() {
         </section>
     );
 }
+export default Planetas;
