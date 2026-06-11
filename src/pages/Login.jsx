@@ -46,7 +46,6 @@ function Login() {
     }
 
     return (
-        /* A classe 'cyber-form-container' aplica o efeito vidro fosco (Glassmorphism) criado no global.css */
         <div className="cyber-form-container" style={{ maxWidth: '450px', marginTop: '2rem' }}>
             <h2 className="terminal-title" style={{ textAlign: 'center', marginBottom: '2rem' }}>
         // CREDENCIAIS DE ACESSO
@@ -79,7 +78,6 @@ function Login() {
                     />
                 </label>
 
-                {/* Feedback visual de erro usando as classes do seu CSS Global */}
                 {erro && (
                     <div className="feedback-error" style={{ padding: '1rem', marginTop: '1rem', marginBottom: '1rem' }}>
                         {erro}
@@ -90,7 +88,6 @@ function Login() {
                     {loading ? "AUTENTICANDO..." : "INICIAR SESSÃO"}
                 </button>
 
-                {/* Link para a tela de Cadastro, perfeitamente alinhado com a temática */}
                 <div style={{ marginTop: '2rem', textAlign: 'center' }}>
                     <span style={{ color: 'var(--terminal-gray)', fontSize: '0.9rem' }}>Ainda não tem autorização? </span>
                     <Link
