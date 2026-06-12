@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { useAuth } from "./contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 
 function Login() {
 
@@ -34,7 +34,7 @@ function Login() {
             // O Contexto agora faz o trabalho pesado de bater na API e salvar o Token
             await login(formLogin);
 
-            // Se passar, redireciona o usuário para o Radar
+            // Se passar, redireciona o usuário para o Radar de Aliens
             navigate("/aliens");
         } catch (error) {
             console.error("Erro ao fazer login:", error);
@@ -66,7 +66,7 @@ function Login() {
                 </label>
 
                 <label>
-                    Senha de Segurança
+                    Senha de Acesso
                     <input
                         autoComplete="current-password"
                         name="senha"
@@ -88,8 +88,16 @@ function Login() {
                     {loading ? "AUTENTICANDO..." : "INICIAR SESSÃO"}
                 </button>
 
-                <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-                    <span style={{ color: 'var(--terminal-gray)', fontSize: '0.9rem' }}>Ainda não tem autorização? </span>
+                <div style={{
+                    marginTop: '2rem',
+                    display: 'flex',
+                    flexDirection: 'column', 
+                    alignItems: 'center',    
+                    gap: '0.5rem'
+                }}>
+                    <span style={{ color: 'var(--terminal-gray)', fontSize: '0.9rem' }}>
+                        Ainda não tem autorização?
+                    </span>
                     <Link
                         to="/cadastro"
                         style={{
@@ -97,7 +105,7 @@ function Login() {
                             textDecoration: 'none',
                             fontWeight: 'bold',
                             letterSpacing: '1px',
-                            marginLeft: '0.5rem'
+                            whiteSpace: 'nowrap'
                         }}
                     >
                         [ SOLICITAR REGISTRO ]
