@@ -21,7 +21,7 @@ function FormAlienNaoControlado({ cadastrarAlien }) {
 
   return (
     <form className="alien-form" onSubmit={enviarFormulario}>
-      <h2>Cadastrar Alien não controlado</h2>
+      <h2>Cadastrar alien não controlado</h2>
 
       <label>
         Nome
