@@ -51,6 +51,52 @@ function Planetas() {
     }
     }
 
+    async function deletarPlaneta(id) {
+        const confirmar = window.confirm("ATENÇÃO: Deseja realmente expurgar este registro do banco de dados?");
+        if(!confirmar) return;
+        
+        try {
+        setMensagem("");
+        await api.delete(`${url}/${id}`);
+        setPlanetas((listaAtual) => listaAtual.filter((planeta) => planeta.id !== id));
+        setMensagem(">>> REGISTRO EXPURGADO COM SUCESSO.");
+        } catch (error) {
+        console.error("Erro ao excluir planeta:", error);
+        setMensagem(">>> ERRO: FALHA AO TENTAR EXPURGAR O REGISTRO.");
+        }
+  }
+
+    function abrirModalCadastro() {
+        setModeEdit(false);
+        limparFormulario();
+        setModalAberto(true);
+    }
+
+    function abrirModalEdicao(planeta) {
+        setModeEdit(true);
+        setFormAvistamento(planeta);
+        setModalAberto(true);
+    }
+
+    function limparFormulario() {
+        setFormPlaneta({
+        titulo: "",
+        local: "",
+        descricao: "",
+        data: "",
+        nivelMedo: 1,
+        });
+    }
+
+    function fecharModal() {
+        setModalAberto(false);
+        limparFormulario();
+        setModeEdit(false);
+    }
+
+    const formatarDado = (dado, fallback) => {
+        return dado === "string" || !dado ? fallback : dado;
+    };
 
     useEffect(() => {
         buscarPlanetasComAxios();
