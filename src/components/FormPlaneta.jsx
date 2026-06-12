@@ -1,3 +1,5 @@
+import React from 'react';
+
 function FormPlaneta({ cadastrarPlaneta, formPlaneta, setFormPlaneta }) {
 
   // Uma única função que gerencia as alterações de QUALQUER input do formulário

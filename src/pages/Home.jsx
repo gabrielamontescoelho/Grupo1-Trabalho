@@ -50,7 +50,7 @@ function Home() {
       >
         {/* CARD 1: ALIENS */}
         <div className="table-wrapper" style={{ padding: "2rem", display: "flex", flexDirection: "column", justifyContent: "between" }}>
-          <h3 style={{ color: "var(--neon-cyan)", marginBottom: "0.5rem" }}>01. RADAR BIOLÓGICO</h3>
+          <h3 style={{ color: "var(--neon-cyan)", marginBottom: "0.5rem", letterSpacing: '1px' }}>01. RADAR BIOLÓGICO / ALIENS</h3>
           <p style={{ color: "var(--terminal-gray)", fontSize: "0.9rem", marginBottom: "1.5rem", flexGrow: 1 }}>
             Identifique assinaturas de espécimes alienígenas interceptados, gerencie níveis de periculosidade de organismos e faça novos registros de catalogação de ameaças.
           </p>
@@ -61,7 +61,7 @@ function Home() {
 
         {/* CARD 2: PLANETAS */}
         <div className="table-wrapper" style={{ padding: "2rem", display: "flex", flexDirection: "column", justifyContent: "between" }}>
-          <h3 style={{ color: "var(--neon-cyan)", marginBottom: "0.5rem" }}>02. CARTOGRAFIA ESTELAR</h3>
+          <h3 style={{ color: "var(--neon-cyan)", marginBottom: "0.5rem", letterSpacing: '1px' }}>02. CARTOGRAFIA ESTELAR / PLANETAS</h3>
           <p style={{ color: "var(--terminal-gray)", fontSize: "0.9rem", marginBottom: "1.5rem", flexGrow: 1 }}>
             Mapeie coordenadas, verifique o clima de novos ecossistemas e gerencie o índice de habitabilidade de novos corpos celestes para futuras expedições.
           </p>
@@ -72,7 +72,7 @@ function Home() {
 
         {/* CARD 3: AVISTAMENTOS */}
         <div className="table-wrapper" style={{ padding: "2rem", display: "flex", flexDirection: "column", justifyContent: "between" }}>
-          <h3 style={{ color: "var(--neon-cyan)", marginBottom: "0.5rem" }}>03. ANOMALIAS ATMOSFÉRICAS</h3>
+          <h3 style={{ color: "var(--neon-cyan)", marginBottom: "0.5rem", letterSpacing: '1px' }}>03. AVISTAMENTOS / ANOMALIAS ATMOSFÉRICAS</h3>
           <p style={{ color: "var(--terminal-gray)", fontSize: "0.9rem", marginBottom: "1.5rem", flexGrow: 1 }}>
             Consulte os feeds de relatórios técnicos de avistamentos ufológicos civis e militares ocorridos em solo com escala analítica de choque e pânico.
           </p>
@@ -110,7 +110,7 @@ function Home() {
               textDecoration: "none"
             }}
           >
-            &gt;&gt;&gt; IR PARA A TELA DE AUTENTICAÇÃO
+            &gt;&gt;&gt; IR PARA A TELA DE AUTENTICAÇÃO OU LOGIN
           </Link>
         </div>
       )}

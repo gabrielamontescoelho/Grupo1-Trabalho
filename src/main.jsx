@@ -5,7 +5,7 @@ import "./style.css";
 import App from "./App";
 import { AuthProvider } from "./contexts/AuthContext";
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <AuthProvider>
@@ -13,4 +13,4 @@ createRoot(document.getElementById('root')).render(
       </AuthProvider>
     </BrowserRouter>
   </StrictMode>
-)
+);
