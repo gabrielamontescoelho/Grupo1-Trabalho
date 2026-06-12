@@ -7,7 +7,7 @@ const url = "https://api.serratec.mwmsoftware.com/planetas";
 function Planetas() {
     
     const [planeta, setPlanetas] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [mensagem, setMensagem] = useState("");
     const [formPlaneta, setFormPlaneta] = useState({
         nome: "",
@@ -104,3 +104,4 @@ function Planetas() {
         </section>
     );
 }
+export default Planetas;
