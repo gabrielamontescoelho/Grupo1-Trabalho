@@ -24,7 +24,7 @@ export default function PainelAliens() {
     return dado === 'string' || !dado ? fallback : dado;
   };
 
-  if (loading) return <div className="feedback">>>> ESCANEANDO ÓRBITAS...</div>;
+  if (loading) return <div className="feedback"> ESCANEANDO ÓRBITAS...</div>;
   if (error) return <div className="feedback-error">AMEAÇA: {error}</div>;
 
   return (

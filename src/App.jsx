@@ -37,6 +37,8 @@ function App() {
             <>
               <Link to="/planetas" className={`nav-link ${isActive('/planetas')}`}>[ CARTOGRAFIA ]</Link>
               <Link to="/aliens" className={`nav-link ${isActive('/aliens')}`}>[ RADAR (ALIENS) ]</Link>
+              <Link to="/avistamentos" className={`nav-link ${isActive('/avistamentos')}`}>[ RADAR (AVISTAMENTOS) ]</Link>
+
             </>
           )}
 
