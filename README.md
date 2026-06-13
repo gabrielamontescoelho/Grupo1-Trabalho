@@ -4,7 +4,7 @@ Trabalho de Conclusão - React + Vite
 🧑‍🚀 Membros da Equipe (Grupo 1)
 Nossa equipe de desenvolvedores operacionais:
 
-Elisa Barbosa Kappaun - [Perfil no GitHub]([#](https://github.com/elisakappaun-netizen))
+Elisa Barbosa Kappaun - [https://github.com/elisakappaun-netizen]([#])
 Filipe Jasmim Brollo do Almo - [Perfil no GitHub](#)
 Gabriela Montes Gomes Coelho - Perfil no GitHub
 Leandro Thebald Coutinho - [Perfil no GitHub](#)
