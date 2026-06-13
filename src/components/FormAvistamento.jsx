@@ -1,10 +1,10 @@
-function FormAvistamento({ cadastrarAvistamento, fecharModal, formAvistamento, setFormAvistamento }) {
+function FormAvistamento({modeEdit, cadastrarAvistamento, fecharModal, formAvistamento, setFormAvistamento }) {
 
 
   return (
     <form className="alien-form" onSubmit={cadastrarAvistamento}>
       <div className="modal-header">
-        <h2>Cadastrar Avistamento</h2>
+        <h2>{modeEdit ? "Editar" : "Cadastrar"} Avistamento</h2>
         <button
           aria-label="Fechar modal"
           className="modal-close"
@@ -78,7 +78,9 @@ function FormAvistamento({ cadastrarAvistamento, fecharModal, formAvistamento, s
         Nivel do medo 
         <input
           name="nivelMedo"
-          
+          max="10"
+          min="1"
+          name="nivelMedo"
           onChange={(event) =>
             setFormAvistamento({
               ...formAvistamento,
@@ -92,7 +94,7 @@ function FormAvistamento({ cadastrarAvistamento, fecharModal, formAvistamento, s
       </label>
 
       <div className="form-actions">
-        <button type="submit">Cadastrar</button>
+        <button type="submit">{modeEdit ? "Editar" : "Cadastrar"} Avistamento</button>
         <button className="button-secondary" onClick={fecharModal} type="button">
           Cancelar
         </button>
