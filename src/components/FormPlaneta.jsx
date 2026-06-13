@@ -1,32 +1,36 @@
-import React from 'react';
-
-function FormPlaneta({ cadastrarPlaneta, formPlaneta, setFormPlaneta }) {
-
-  // Uma única função que gerencia as alterações de QUALQUER input do formulário
-  const handleChange = (event) => {
-    const { name, value, type } = event.target;
-
-    setFormPlaneta({
-      ...formPlaneta,
-      // Se o input for do tipo número, fazemos uma tratativa amigável:
-      // Se estiver vazio, mantém vazio para o usuário conseguir apagar. Se não, converte.
-      [name]: type === 'number' ? (value === '' ? '' : Number(value)) : value
-    });
-  };
-
+function FormPlaneta({
+  modeEdit,
+  cadastrarPlaneta,
+  fecharModal,
+  formPlaneta,
+  setFormPlaneta,
+}) {
   return (
-    <form className="planeta-form" onSubmit={cadastrarPlaneta}>
-      <h2>Cadastrar planeta</h2>
+    <form className="alien-form" onSubmit={cadastrarPlaneta}>
+      <div className="modal-header">
+        <h2>{modeEdit ? "Editar" : "Cadastrar"} Planeta</h2>
+
+        <button
+          aria-label="Fechar modal"
+          className="modal-close"
+          onClick={fecharModal}
+          type="button"
+        >
+          X
+        </button>
+      </div>
 
       <label>
         Nome
         <input
           name="nome"
-          type="text"
           minLength="2"
+          onChange={(event) =>
+            setFormPlaneta({ ...formPlaneta, nome: event.target.value })
+          }
           required
-          value={formPlaneta.nome || ''} // Proteção contra o erro de controlled/uncontrolled
-          onChange={handleChange}
+          type="text"
+          value={formPlaneta.nome}
         />
       </label>
 
@@ -34,11 +38,13 @@ function FormPlaneta({ cadastrarPlaneta, formPlaneta, setFormPlaneta }) {
         Galáxia
         <input
           name="galaxia"
-          type="text"
           minLength="2"
+          onChange={(event) =>
+            setFormPlaneta({ ...formPlaneta, galaxia: event.target.value })
+          }
           required
-          value={formPlaneta.galaxia || ''}
-          onChange={handleChange}
+          type="text"
+          value={formPlaneta.galaxia}
         />
       </label>
 
@@ -46,40 +52,57 @@ function FormPlaneta({ cadastrarPlaneta, formPlaneta, setFormPlaneta }) {
         Clima
         <input
           name="clima"
-          type="text"
           minLength="2"
+          onChange={(event) =>
+            setFormPlaneta({ ...formPlaneta, clima: event.target.value })
+          }
           required
-          value={formPlaneta.clima || ''}
-          onChange={handleChange}
+          type="text"
+          value={formPlaneta.clima}
         />
       </label>
 
       <label>
-        Habitável (Nível)
-        <input
+        Habitável
+        <select
           name="habitavel"
-          type="number"
-          min="1"
-          max="10"
+          onChange={(event) =>
+            setFormPlaneta({
+              ...formPlaneta,
+              habitavel: event.target.value === "true",
+            })
+          }
           required
-          value={formPlaneta.habitavel ?? ''} // Uso do nullish para aceitar o número 0 se necessário
-          onChange={handleChange}
-        />
+          value={String(formPlaneta.habitavel)}
+        >
+          <option value="true">Sim</option>
+          <option value="false">Não</option>
+        </select>
       </label>
 
       <label>
         Descrição
         <input
           name="descricao"
-          type="text"
           minLength="3"
+          onChange={(event) =>
+            setFormPlaneta({ ...formPlaneta, descricao: event.target.value })
+          }
           required
-          value={formPlaneta.descricao || ''}
-          onChange={handleChange}
+          type="text"
+          value={formPlaneta.descricao}
         />
       </label>
 
-      <button type="submit">Cadastrar</button>
+      <div className="form-actions">
+        <button type="submit">
+          {modeEdit ? "Editar" : "Cadastrar"} Planeta
+        </button>
+
+        <button className="button-secondary" onClick={fecharModal} type="button">
+          Cancelar
+        </button>
+      </div>
     </form>
   );
 }
