@@ -1,12 +1,11 @@
 import { Navigate, Route, Routes } from "react-router";
-import { useAuth } from "./contexts/AuthContext";
 import Aliens from "./pages/Aliens";
-import Cadastro from "./pages/Cadastro";
+import Avistamentos from "./pages/Avistamentos"; 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Planetas from "./pages/Planetas";
-import Avistamentos from "./pages/Avistamentos";
-
+import { useAuth } from "./contexts/AuthContext";
+import Cadastro from "./pages/Cadastro";
 
 function RotaPrivada({ children }) {
   const { carregandoToken, estaAutenticado } = useAuth();
@@ -28,15 +27,24 @@ function AppRouter() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/cadastro" element={<Cadastro />} />
+      {/* removido /cadastro pois não está no TCC */}
 
-
-      <Route 
-      path="/avistamentos" 
-      element={
-        <RotaPrivada>
-          <Avistamentos />  
-        </RotaPrivada>} />
-
+      <Route
+        path="/home"
+        element={
+          <RotaPrivada>
+            <Home />
+          </RotaPrivada>
+        }
+      />
+      <Route
+        path="/avistamentos"
+        element={
+          <RotaPrivada>
+            <Avistamentos />
+          </RotaPrivada>
+        }
+      />
       <Route
         path="/aliens"
         element={
