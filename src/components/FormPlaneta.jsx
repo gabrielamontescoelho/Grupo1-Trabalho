@@ -1,8 +1,15 @@
-function FormPlaneta({ modeEdit,cadastrarPlaneta, fecharModal, formPlaneta, setFormPlaneta }) {
+function FormPlaneta({
+  modeEdit,
+  cadastrarPlaneta,
+  fecharModal,
+  formPlaneta,
+  setFormPlaneta,
+}) {
   return (
     <form className="alien-form" onSubmit={cadastrarPlaneta}>
       <div className="modal-header">
         <h2>{modeEdit ? "Editar" : "Cadastrar"} Planeta</h2>
+
         <button
           aria-label="Fechar modal"
           className="modal-close"
@@ -55,7 +62,7 @@ function FormPlaneta({ modeEdit,cadastrarPlaneta, fecharModal, formPlaneta, setF
         />
       </label>
 
-<label>
+      <label>
         Habitável
         <select
           name="habitavel"
@@ -88,7 +95,10 @@ function FormPlaneta({ modeEdit,cadastrarPlaneta, fecharModal, formPlaneta, setF
       </label>
 
       <div className="form-actions">
-        <button type="submit">{modeEdit ? "Editar" : "Cadastrar"} Planeta</button>
+        <button type="submit">
+          {modeEdit ? "Editar" : "Cadastrar"} Planeta
+        </button>
+
         <button className="button-secondary" onClick={fecharModal} type="button">
           Cancelar
         </button>

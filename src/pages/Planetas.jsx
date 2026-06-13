@@ -45,11 +45,11 @@ function Planetas() {
         setPlanetas((listaAtual) =>
           listaAtual.map((planeta) => planeta.id === formPlaneta.id ? resposta.data : planeta)
         );
-        setMensagem(">>> REGISTRO DE PLANETA ATUALIZADO COM SUCESSO.");
+        setMensagem(">>> REGISTRO DE AVISTAMENTO ATUALIZADO COM SUCESSO.");
       } else {
         const resposta = await api.post(url, formPlaneta);
         setPlanetas((listaAtual) => [...listaAtual, resposta.data]);
-        setMensagem(">>> NOVO PLANETA REGISTRADO NO RADAR.");
+        setMensagem(">>> NOVO AVISTAMENTO REGISTRADO NO RADAR.");
       }
       fecharModal();
     } catch (error) {

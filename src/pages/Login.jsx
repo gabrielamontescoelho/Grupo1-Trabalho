@@ -34,7 +34,7 @@ function Login() {
             // O Contexto agora faz o trabalho pesado de bater na API e salvar o Token
             await login(formLogin);
 
-            // Se passar, redireciona o usuário para o Radar de Aliens
+            // Se passar, redireciona o usuário para o Radar
             navigate("/aliens");
         } catch (error) {
             console.error("Erro ao fazer login:", error);
@@ -66,7 +66,7 @@ function Login() {
                 </label>
 
                 <label>
-                    Senha de Acesso
+                    Senha de Segurança
                     <input
                         autoComplete="current-password"
                         name="senha"
@@ -88,16 +88,8 @@ function Login() {
                     {loading ? "AUTENTICANDO..." : "INICIAR SESSÃO"}
                 </button>
 
-                <div style={{
-                    marginTop: '2rem',
-                    display: 'flex',
-                    flexDirection: 'column', 
-                    alignItems: 'center',    
-                    gap: '0.5rem'
-                }}>
-                    <span style={{ color: 'var(--terminal-gray)', fontSize: '0.9rem' }}>
-                        Ainda não tem autorização?
-                    </span>
+                <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+                    <span style={{ color: 'var(--terminal-gray)', fontSize: '0.9rem' }}>Ainda não tem autorização? </span>
                     <Link
                         to="/cadastro"
                         style={{
@@ -105,7 +97,7 @@ function Login() {
                             textDecoration: 'none',
                             fontWeight: 'bold',
                             letterSpacing: '1px',
-                            whiteSpace: 'nowrap'
+                            marginLeft: '0.5rem'
                         }}
                     >
                         [ SOLICITAR REGISTRO ]
