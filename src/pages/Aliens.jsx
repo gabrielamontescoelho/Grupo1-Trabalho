@@ -154,6 +154,7 @@ function Aliens() {
                 <th>ASSINATURA / NOME</th>
                 <th>CLASSIFICAÇÃO BIOLÓGICA</th>
                 <th>PERICULOSIDADE</th>
+                <th>DESCRICAO</th>
                 <th style={{ textAlign: 'center' }}>AÇÕES TÁTICAS</th>
               </tr>
             </thead>
