@@ -205,8 +205,9 @@ function Planetas() {
                 <th>GALÁXIA</th>
                 <th>CLIMA</th>
                 <th>HABITÁVEL</th>
+                <th>DESCRIÇÃO</th>
                 <th style={{ textAlign: "center" }}>AÇÕES</th>
-              </tr>
+                </tr>
             </thead>
 
             <tbody>
@@ -224,13 +225,33 @@ function Planetas() {
 
                   <td>{planeta?.habitavel ? "SIM" : "NÃO"}</td>
 
-                  <td
+                    <td
                     style={{
-                      display: "flex",
-                      gap: "0.5rem",
-                      justifyContent: "center",
+                        maxWidth: "300px",
+                        minWidth: "250px",
+                        whiteSpace: "normal",
+                        wordBreak: "break-word",
                     }}
-                  >
+                    >
+                    {formatarDado(planeta?.descricao, "SEM DESCRIÇÃO").substring(0, 80)}
+                    {planeta?.descricao?.length > 80 ? "..." : ""}
+                    </td>
+
+                    <td
+                    style={{
+                        minWidth: "260px",
+                        textAlign: "center",
+                    }}
+                    >
+                    <div
+                        style={{
+                        display: "flex",
+                        gap: "0.5rem",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        flexWrap: "nowrap",
+                        }}
+                    >
                     <button
                       onClick={() => abrirModalEdicao(planeta)}
                       style={{
@@ -245,7 +266,7 @@ function Planetas() {
                       [ EDITAR ]
                     </button>
 
-                    <button
+                <button
                       onClick={() => deletarPlaneta(planeta.id)}
                       style={{
                         padding: "0.3rem 0.6rem",
@@ -255,10 +276,11 @@ function Planetas() {
                         borderColor: "var(--alert-red)",
                         color: "var(--alert-red)",
                       }}
-                    >
+                >
                       [ EXCLUIR ]
                     </button>
-                  </td>
+                  </div>
+                </td>
                 </tr>
               ))}
             </tbody>
