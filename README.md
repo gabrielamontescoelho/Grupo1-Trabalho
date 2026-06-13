@@ -1,16 +1,29 @@
-# React + Vite
+🛸 Diário de Avistamentos ET
+Trabalho de Conclusão - React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🧑‍🚀 Membros da Equipe (Grupo 1)
+Nossa equipe de desenvolvedores operacionais:
 
-Currently, two official plugins are available:
+Elisa Barbosa Kappaun - [Perfil no GitHub]([#](https://github.com/elisakappaun-netizen))
+Filipe Jasmim Brollo do Almo - [Perfil no GitHub](#)
+Gabriela Montes Gomes Coelho - Perfil no GitHub
+Leandro Thebald Coutinho - [Perfil no GitHub](#)
+Nathália de Queiroz Antunes - [Perfil no GitHub](#)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+📝 Descrição do Sistema
+A aplicação é um terminal tático que permite o gerenciamento de informações confidenciais relacionadas a Avistamentos, Aliens e Planetas. O usuário (operador) deve realizar a autenticação segura no sistema (Login) para acessar a página inicial e navegar pelo menu integrado para as telas principais de monitoramento.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🎯 Objetivo do Projeto
+Desenvolver uma aplicação web interativa utilizando React com Vite para consumir dados de forma dinâmica. O projeto exige a entrega de uma aplicação 100% funcional, contemplando:
+Interface de Login e Autenticação.
+Roteamento e navegação fluida entre páginas protegidas.
+Consumo real e requisições completas (GET, POST, PUT, DELETE) às rotas da API.
 
-## Expanding the ESLint configuration
+🔗 API Utilizada
+A base de dados extraterrestres consumida por este projeto foi disponibilizada via Swagger. Você pode consultar as rotas e regras de negócio no link abaixo:
+Documentação da API - Serratec MWM Software
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+
