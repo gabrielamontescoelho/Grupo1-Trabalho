@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import api from "../services/api";
@@ -22,6 +21,10 @@ function Planetas() {
     descricao: "",
   });
 
+  useEffect(() => {
+    buscarPlanetas();
+  }, []);
+
   async function buscarPlanetas() {
     try {
       setLoading(true);
@@ -42,15 +45,22 @@ function Planetas() {
     try {
       if (modeEdit) {
         const resposta = await api.put(`${url}/${formPlaneta.id}`, formPlaneta);
+
         setPlanetas((listaAtual) =>
-          listaAtual.map((planeta) => planeta.id === formPlaneta.id ? resposta.data : planeta)
+          listaAtual.map((planeta) =>
+            planeta.id === formPlaneta.id ? resposta.data : planeta
+          )
         );
-        setMensagem(">>> REGISTRO DE AVISTAMENTO ATUALIZADO COM SUCESSO.");
+
+        setMensagem(">>> REGISTRO DE PLANETA ATUALIZADO COM SUCESSO.");
       } else {
         const resposta = await api.post(url, formPlaneta);
+
         setPlanetas((listaAtual) => [...listaAtual, resposta.data]);
-        setMensagem(">>> NOVO AVISTAMENTO REGISTRADO NO RADAR.");
+
+        setMensagem(">>> NOVO PLANETA REGISTRADO NO RADAR.");
       }
+
       fecharModal();
     } catch (error) {
       console.error("Erro ao salvar planeta:", error);
@@ -106,25 +116,12 @@ function Planetas() {
   function fecharModal() {
     setModalAberto(false);
     limparFormulario();
+    setModeEdit(false);
   }
 
   const formatarDado = (dado, fallback) => {
     return dado === "string" || !dado ? fallback : dado;
   };
-
-  useEffect(() => {
-    buscarPlanetas();
-  }, []);
-
-  useEffect(() => {
-    console.log("Estado Planetas atualizado:", planetas);
-  }, [planetas]);
-
-  useEffect(() => {
-  console.log(planetas);
-  console.log(typeof planetas);
-  console.log(Array.isArray(planetas));
-}, [planetas]);
 
   return (
     <div className="radar-panel">
@@ -137,10 +134,7 @@ function Planetas() {
         }}
       >
         <div>
-          <h2
-            className="terminal-title"
-            style={{ marginBottom: "0.2rem" }}
-          >
+          <h2 className="terminal-title" style={{ marginBottom: "0.2rem" }}>
             // RADAR DE PLANETAS
           </h2>
 
@@ -220,30 +214,15 @@ function Planetas() {
                 <tr key={planeta.id}>
                   <td className="tech-id">#{planeta.id}</td>
 
-                  <td>
-                    {formatarDado(
-                      planeta?.nome,
-                      "NOME DESCONHECIDO"
-                    )}
-                  </td>
+                  <td>{formatarDado(planeta?.nome, "NOME DESCONHECIDO")}</td>
 
                   <td>
-                    {formatarDado(
-                      planeta?.galaxia,
-                      "GALÁXIA DESCONHECIDA"
-                    )}
+                    {formatarDado(planeta?.galaxia, "GALÁXIA DESCONHECIDA")}
                   </td>
 
-                  <td>
-                    {formatarDado(
-                      planeta?.clima,
-                      "NÃO INFORMADO"
-                    )}
-                  </td>
+                  <td>{formatarDado(planeta?.clima, "NÃO INFORMADO")}</td>
 
-                  <td>
-                    {planeta?.habitavel ? "SIM" : "NÃO"}
-                  </td>
+                  <td>{planeta?.habitavel ? "SIM" : "NÃO"}</td>
 
                   <td
                     style={{
@@ -253,9 +232,7 @@ function Planetas() {
                     }}
                   >
                     <button
-                      onClick={() =>
-                        abrirModalEdicao(planeta)
-                      }
+                      onClick={() => abrirModalEdicao(planeta)}
                       style={{
                         padding: "0.3rem 0.6rem",
                         fontSize: "0.8rem",
@@ -269,9 +246,7 @@ function Planetas() {
                     </button>
 
                     <button
-                      onClick={() =>
-                        deletarPlaneta(planeta.id)
-                      }
+                      onClick={() => deletarPlaneta(planeta.id)}
                       style={{
                         padding: "0.3rem 0.6rem",
                         fontSize: "0.8rem",

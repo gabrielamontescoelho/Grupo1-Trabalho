@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Planetas from "./pages/Planetas";
 import { useAuth } from "./contexts/AuthContext";
+import Cadastro from "./pages/Cadastro";
 
 function RotaPrivada({ children }) {
   const { carregandoToken, estaAutenticado } = useAuth();
@@ -23,9 +24,9 @@ function RotaPrivada({ children }) {
 function AppRouter() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" replace />} /> {/* redireciona pra login */}
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
-
+      <Route path="/cadastro" element={<Cadastro />} />
       {/* removido /cadastro pois não está no TCC */}
 
       <Route

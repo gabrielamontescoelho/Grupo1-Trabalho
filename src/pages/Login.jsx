@@ -34,8 +34,9 @@ function Login() {
             // O Contexto agora faz o trabalho pesado de bater na API e salvar o Token
             await login(formLogin);
 
-            // Se passar, redireciona o usuário para o Radar
-            navigate("/aliens");
+            // Se passar, redireciona o usuário para o Radar de Aliens
+            navigate("/");
+
         } catch (error) {
             console.error("Erro ao fazer login:", error);
             // Mantendo o estilo tático/alerta para o erro
