@@ -137,7 +137,7 @@ function Aliens() {
 
           {nomeUsuario && (
             <p style={{ color: "var(--neon-green)", fontSize: "0.9rem" }}>
-              OPERADOR ATIVO: {nomeUsuario}
+              OPERADOR OU USUÁRIO ATIVO: {nomeUsuario}
             </p>
           )}
         </div>
