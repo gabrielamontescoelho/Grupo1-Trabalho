@@ -15,7 +15,8 @@ Nossa equipe de desenvolvedores operacionais que contribuíram para este projeto
 
 ---
 
-* ===========================================================================================================================================
+* ============================================================
+
 [![React](https://img.shields.io/badge/React-v19-61DAFB?logo=react)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-v6-646CFF?logo=vite)](https://vite.dev)
 [![CSS3](https://img.shields.io/badge/CSS3-Pure--Vanilla-1572B6?logo=css3)](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
@@ -24,7 +25,8 @@ Nossa equipe de desenvolvedores operacionais que contribuíram para este projeto
 
 * Autor: [Leandro Coutinho, Elisa Kappaun, Gabriela Coelho, Filipe Brollo e Nathália Antunes]
 * Data: 15/06/206
-* ===========================================================================================================================================
+
+* ============================================================
 
 > **Trabalho de Conclusão de Curso (TCC) em React ** desenvolvido para a Residência em TIC Software do Serratec.
 > Uma aplicação web SPA completa, projetada para o gerenciamento, catalogação e monitoramento de informações relacionadas a avistamentos, aliens e planetas através do consumo real da API do Swagger.
@@ -42,7 +44,7 @@ Consumo real e requisições completas (GET, POST, PUT, DELETE) às rotas da API
 
 🔗 API Utilizada
 A base de dados extraterrestres consumida por este projeto foi disponibilizada via Swagger. Você pode consultar as rotas e regras de negócio no link abaixo:
-Documentação da API - Serratec MWM Software
+Documentação da API - Serratec MWM Software: https://api.serratec.mwmsoftware.com/docs
 
 ---
 
@@ -65,7 +67,7 @@ Para estruturar e centralizar esses registos com máxima resiliência, este ecos
 
 ---
 
-## features ⚡ Funcionalidades Principais
+## Features ⚡ Funcionalidades Principais
 
 * **🔒 Escudo de Autenticação (Login Tático):** Fluxo de acesso restrito consumindo a rota de autenticação. Rotas privadas bloqueadas no ecossistema React garantem que apenas operadores com tokens válidos acedam ao painel do radar.
 * **📡 Central de Inteligência (Home/Radar):** Consumo assíncrono e dinâmico de múltiplos endpoints em paralelo para listagem de ocorrências, utilizando tratamento de dados defensivo (*Null Guards*) para mitigar falhas.
@@ -74,7 +76,7 @@ Para estruturar e centralizar esses registos com máxima resiliência, este ecos
 
 ---
 
-## css 💎 Engenharia de Estilização Intermediária (CSS Puro e Inline)
+## CSS 💎 Engenharia de Estilização Intermediária (CSS Puro e Inline)
 
 O grande diferencial técnico deste projeto é a ausência de frameworks utilitários de estilização. Toda a interface foi desenhada através de **CSS Puro** e **estilos inline estruturais baseados no estado do React**, demonstrando domínio sobre a renderização nativa da Web:
 
@@ -85,7 +87,7 @@ O grande diferencial técnico deste projeto é a ausência de frameworks utilit�
 
 ---
 
-## api 🛠️ Especificações Técnicas e Rotas Consumidas (Swagger)
+## API 🛠️ Especificações Técnicas e Rotas Consumidas (Swagger)
 
 A aplicação consome diretamente a API oficial disponibilizada no Swagger:
 `https://api.serratec.mwmsoftware.com/docs#`
@@ -146,7 +148,7 @@ A aplicação consome diretamente a API oficial disponibilizada no Swagger:
 
 ---
 
-## requirements 🎯 Critérios de Avaliação Atendidos
+## Requirements 🎯 Critérios de Avaliação Atendidos
 
 * [x] **Funcionamento do Login:** Fluxo de autenticação funcional com redirecionamento seguro para a Home.
 * [x] **Consumo Correto da API:** Integração assíncrona completa via Axios conectada ao Swagger.
