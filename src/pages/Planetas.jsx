@@ -29,12 +29,13 @@ function Planetas() {
     try {
       setLoading(true);
       const resposta = await api.get(url);
-      setPlanetas(resposta.data);
+      setTimeout(() => {
+        setPlanetas(resposta.data);
+        setLoading(false);
+      }, 2000);
     } catch (error) {
       console.error("Erro ao buscar planetas:", error);
       setMensagem(">>> FALHA DE COMUNICAÇÃO COM A BASE DE DADOS.");
-    } finally {
-      setLoading(false);
     }
   }
 
@@ -142,10 +143,10 @@ function Planetas() {
             <p
               style={{
                 color: "var(--neon-green)",
-                fontSize: "0.9rem",
+                fontSize: "0.8rem",
               }}
             >
-              OPERADOR ATIVO: {nomeUsuario}
+              USUÁRIO ATIVO: {nomeUsuario}
             </p>
           )}
         </div>
@@ -257,10 +258,10 @@ function Planetas() {
                       style={{
                         padding: "0.3rem 0.6rem",
                         fontSize: "0.8rem",
-                        width: "auto",
                         marginTop: 0,
                         borderColor: "var(--neon-cyan)",
-                        color: "var(--neon-cyan)",
+                        width: "stretch",
+                        whiteSpace: "nowrap",
                       }}
                     >
                       [ EDITAR ]
@@ -271,10 +272,11 @@ function Planetas() {
                       style={{
                         padding: "0.3rem 0.6rem",
                         fontSize: "0.8rem",
-                        width: "auto",
                         marginTop: 0,
                         borderColor: "var(--alert-red)",
                         color: "var(--alert-red)",
+                        width: "stretch",
+                        whiteSpace: "nowrap",
                       }}
                 >
                       [ EXCLUIR ]
@@ -335,6 +337,7 @@ function Planetas() {
               cadastrarPlaneta={salvarPlaneta}
               formPlaneta={formPlaneta}
               setFormPlaneta={setFormPlaneta}
+              fecharModal={() => setModalAberto(false)}
             />
           </div>
         </div>

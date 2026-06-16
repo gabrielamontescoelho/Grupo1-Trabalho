@@ -35,7 +35,7 @@ function App() {
           {/* ÁREA RESTRITA: Só renderiza os links se o usuário estiver logado */}
           {estaAutenticado && (
             <>
-              <Link to="/planetas" className={`nav-link ${isActive('/planetas')}`}>[ CARTOGRAFIA ]</Link>
+              <Link to="/planetas" className={`nav-link ${isActive('/planetas')}`}>[ PLANETAS ]</Link>
               <Link to="/aliens" className={`nav-link ${isActive('/aliens')}`}>[ ALIENS ]</Link>
               <Link to="/avistamentos" className={`nav-link ${isActive('/avistamentos')}`}>[ AVISTAMENTOS ]</Link>
 

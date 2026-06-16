@@ -29,12 +29,13 @@ function Aliens() {
     try {
       setLoading(true);
       const resposta = await api.get(url);
-      setAliens(resposta.data);
+      setTimeout(() => {
+        setAliens(resposta.data);
+        setLoading(false);
+      }, 2000);
     } catch (error) {
       console.error("Erro ao buscar aliens:", error);
       setMensagem(">>> FALHA DE COMUNICAÇÃO COM A BASE DE DADOS.");
-    } finally {
-      setLoading(false);
     }
   }
 
@@ -113,7 +114,6 @@ function Aliens() {
   function fecharModal() {
     setModalAberto(false);
     limparFormulario();
-    setModeEdit(false);
   }
 
   const formatarDado = (dado, fallback) => {
@@ -136,8 +136,8 @@ function Aliens() {
           </h2>
 
           {nomeUsuario && (
-            <p style={{ color: "var(--neon-green)", fontSize: "0.9rem" }}>
-              OPERADOR ATIVO: {nomeUsuario}
+            <p style={{ color: "var(--neon-green)", fontSize: "1.0rem" }}>
+              OPERADOR / USUÁRIO ATIVO: {nomeUsuario}
             </p>
           )}
         </div>
@@ -163,11 +163,10 @@ function Aliens() {
             backgroundColor: mensagem.includes("ERRO")
               ? "var(--alert-red-dim)"
               : "rgba(57, 255, 20, 0.1)",
-            border: `1px solid ${
-              mensagem.includes("ERRO")
-                ? "var(--alert-red)"
-                : "var(--neon-green)"
-            }`,
+            border: `1px solid ${mensagem.includes("ERRO")
+              ? "var(--alert-red)"
+              : "var(--neon-green)"
+              }`,
             color: mensagem.includes("ERRO")
               ? "var(--alert-red)"
               : "var(--neon-green)",
@@ -180,7 +179,7 @@ function Aliens() {
       )}
 
       {loading ? (
-        <div className="feedback">--==^^**** VARRENDO SETORES DA GALÁXIA...</div>
+        <div className="feedback">--==^^****^^==-- VARRENDO SETORES DA GALÁXIA...</div>
       ) : aliens.length === 0 ? (
         <div className="feedback-empty">
           SINAL ESTÁVEL: NENHUM ORGANISMO NO PERÍMETRO.
@@ -225,9 +224,8 @@ function Aliens() {
 
                   <td>
                     <span
-                      className={`badge-perigo ${
-                        alien.periculosidade >= 7 ? "alerta-maximo" : ""
-                      }`}
+                      className={`badge-perigo ${alien.periculosidade >= 7 ? "alerta-maximo" : ""
+                        }`}
                     >
                       NÍVEL {alien?.periculosidade || "1"}
                     </span>
@@ -268,7 +266,8 @@ function Aliens() {
                         style={{
                           padding: "0.3rem 0.6rem",
                           fontSize: "0.8rem",
-                          width: "auto",
+                          width: "stretch",
+                          whiteSpace: "nowrap",
                           minWidth: "90px",
                           marginTop: 0,
                           borderColor: "var(--neon-cyan)",
@@ -284,7 +283,8 @@ function Aliens() {
                         style={{
                           padding: "0.3rem 0.6rem",
                           fontSize: "0.8rem",
-                          width: "auto",
+                          width: "stretch",
+                          whiteSpace: "nowrap",
                           minWidth: "90px",
                           marginTop: 0,
                           borderColor: "var(--alert-red)",
@@ -303,54 +303,35 @@ function Aliens() {
         </div>
       )}
 
+      {/* Se o modal estiver aberto, renderiza este bloco inteiro */}
       {modalAberto && (
         <div
+          className="modal-overlay"
+          onClick={fecharModal}
           style={{
             position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-            backdropFilter: "blur(8px)",
+            top: 0, left: 0, right: 0, bottom: 0,
+            backgroundColor: "rgba(0,0,0,0.7)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            zIndex: 9999,
+            zIndex: 999
           }}
         >
+
           <div
-            style={{
-              position: "relative",
-              width: "100%",
-              maxWidth: "600px",
-              padding: "1rem",
-            }}
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+            style={{ position: "relative" }}
           >
-            <button
-              onClick={fecharModal}
-              style={{
-                position: "absolute",
-                top: "2rem",
-                right: "2rem",
-                width: "auto",
-                padding: "0.5rem",
-                background: "transparent",
-                border: "none",
-                color: "var(--alert-red)",
-                fontSize: "1.2rem",
-                zIndex: 10,
-              }}
-            >
-              [ X ]
-            </button>
 
             <FormAlien
-              modeEdit={modeEdit}
               cadastrarAlien={salvarAlien}
               formAlien={formAlien}
               setFormAlien={setFormAlien}
+              fecharModal={fecharModal}
             />
+
           </div>
         </div>
       )}
