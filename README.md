@@ -2,7 +2,7 @@
 
 * Nosso Deploy do Trabalho Final em React + Vite: https://grupo1trabalho.netlify.app/
 
-🧑‍🚀 Membros da Equipe (Grupo 1)
+🧑‍🚀 Membros da Equipe (Grupo 1). 
 Nossa equipe de desenvolvedores operacionais que contribuíram para este projeto:
 
 | Foto | Usuário | Função (Exemplo) |
@@ -28,13 +28,23 @@ Nossa equipe de desenvolvedores operacionais que contribuíram para este projeto
 
 * ============================================================
 
-> **Trabalho de Conclusão de Curso (TCC) em React ** desenvolvido para a Residência em TIC Software do Serratec.
-> Uma aplicação web SPA completa, projetada para o gerenciamento, catalogação e monitoramento de informações relacionadas a avistamentos, aliens e planetas através do consumo real da API do Swagger.
+** Trabalho de Conclusão de Curso (TCC) em React ** desenvolvido para a Residência em TIC Software do Serratec.
+** Uma aplicação web SPA completa, projetada para o gerenciamento, catalogação e monitoramento de informações relacionadas a avistamentos, aliens e planetas através do consumo real da API do Swagger.
 
 ---
 
 📝 Descrição da Aplicação Web
 A aplicação é um terminal tático que permite o gerenciamento de informações confidenciais relacionadas a Avistamentos, Aliens e Planetas. O usuário (operador) deve realizar a autenticação segura no sistema (Login) para acessar a página inicial e navegar pelo menu integrado para as telas principais de monitoramento.
+
+Em conformidade com o projeto final, a engenharia e a distribuição das sprints foram organizadas da seguinte forma:
+
+1. Idealização e arquitetura visual da interface em CSS Puro, design dos painéis translúcidos em Glassmorphism, responsividade global do layout e componentização das telas de Login e Home com tratamento completo de feedbacks visuais de carregamento e estado global de autenticação.
+
+2. Configuração estrutural do ecossistema React + Vite, gerenciamento de rotas e navegação com React Router DOM e implementação do fluxo de CRUD completo da Página de Aliens.
+
+3. Integração de consumo com os endpoints da API de Aliens, formatação das requisições assíncronas de escrita (GET/POST/PUT/DELETE), estruturação das tabelas e dos formulários de cadastro.
+
+4. Integração de consumo com a API de Planetas, Avistamentos, mapeamento dos estados de resposta, erro do servidor e tratamento defensivo para exibição de alertas de sucesso na persistência dos dados.
 
 🎯 Objetivo do Projeto
 Desenvolver uma aplicação web interativa utilizando React com Vite para consumir dados de forma dinâmica. O projeto exige a entrega de uma aplicação 100% funcional, contemplando:
