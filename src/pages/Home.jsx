@@ -25,7 +25,7 @@ function Home() {
       >
         <span style={{ color: "var(--neon-green)" }}>● CORE DO SISTEMA: OPERACIONAL</span>
         <span style={{ color: "var(--neon-cyan)" }}>FREQUÊNCIA: 433.92 MHz</span>
-        <span style={{ color: "var(--terminal-gray)" }}>AUTENTICAÇÃO: {estaAutenticado ? "NÍVEL ALTO" : "RESTRITA"}</span>
+        <span style={{ color: "var(--terminal-gray)" }}>AUTENTICAÇÃO: {estaAutenticado ? "AUTENTICADO NÍVEL ALTO" : "RESTRITA"}</span>
       </div>
 
       {/* 2. BOAS-VINDAS E INTRODUÇÃO */}
@@ -63,7 +63,7 @@ function Home() {
         <div className="table-wrapper" style={{ padding: "2rem", display: "flex", flexDirection: "column", justifyContent: "between" }}>
           <h3 style={{ color: "var(--neon-cyan)", marginBottom: "0.5rem" }}>02. CARTOGRAFIA ESTELAR</h3>
           <p style={{ color: "var(--terminal-gray)", fontSize: "0.9rem", marginBottom: "1.5rem", flexGrow: 1 }}>
-            Mapeie coordenadas, verifique o clima de novos ecossistemas e gerencie o índice de habitabilidade de novos corpos celestes para futuras expedições.
+            Mapeie coordenadas de planetas, verifique o clima de novos ecossistemas e gerencie o índice de habitabilidade de novos corpos celestes para futuras expedições.
           </p>
           <Link to="/planetas" className="cyber-button" style={{ textDecoration: "none", textAlign: "center", display: "block" }}>
             {estaAutenticado ? "[ VER PLANETAS ]" : "[ RESTRITO ]"}
@@ -110,7 +110,7 @@ function Home() {
               textDecoration: "none"
             }}
           >
-            &gt;&gt;&gt; IR PARA A TELA DE AUTENTICAÇÃO
+            &gt;&gt;&gt; IR PARA A TELA DE AUTENTICAÇÃO / LOGIN
           </Link>
         </div>
       )}

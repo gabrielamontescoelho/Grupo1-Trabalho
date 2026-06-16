@@ -30,12 +30,13 @@ function Avistamentos() {
     try {
       setLoading(true);
       const resposta = await api.get(url);
-      setAvistamentos(resposta.data);
+      setTimeout(() => {
+        setAvistamentos(resposta.data);
+        setLoading(false);
+      }, 2000);
     } catch (error) {
       console.error("Erro ao buscar avistamentos:", error);
       setMensagem(">>> FALHA DE COMUNICAÇÃO COM A BASE DE DADOS.");
-    } finally {
-      setLoading(false);
     }
   }
 
@@ -85,7 +86,7 @@ function Avistamentos() {
 
   function abrirModalEdicao(avistamento) {
     setModeEdit(true);
-    setFormAvistamento(avistamento); 
+    setFormAvistamento(avistamento);
     setModalAberto(true);
   }
 
@@ -115,7 +116,7 @@ function Avistamentos() {
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '2rem' }}>
         <div>
           <h2 className="terminal-title" style={{ marginBottom: '0.2rem' }}>// RADAR DE AVISTAMENTOS</h2>
-          {nomeUsuario && <p style={{ color: 'var(--neon-green)', fontSize: '0.9rem' }}>OPERADOR ATIVO: {nomeUsuario}</p>}
+          {nomeUsuario && <p style={{ color: 'var(--neon-green)', fontSize: '0.8rem' }}>USUÁRIO ATIVO: {nomeUsuario}</p>}
         </div>
 
         <button
@@ -177,13 +178,13 @@ function Avistamentos() {
                   <td style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center' }}>
                     <button
                       onClick={() => abrirModalEdicao(avistamento)}
-                      style={{ padding: '0.3rem 0.6rem', fontSize: '0.8rem', width: 'auto', marginTop: 0, borderColor: 'var(--neon-cyan)', color: 'var(--neon-cyan)', background: 'transparent' }}
+                      style={{ padding: '0.3rem 0.6rem', fontSize: '0.8rem', width: "stretch", whiteSpace: "nowrap", marginTop: 0, borderColor: 'var(--neon-cyan)', color: 'var(--neon-cyan)', background: 'transparent' }}
                     >
                       [ EDITAR ]
                     </button>
                     <button
                       onClick={() => deletarAvistamento(avistamento.id)}
-                      style={{ padding: '0.3rem 0.6rem', fontSize: '0.8rem', width: 'auto', marginTop: 0, borderColor: 'var(--alert-red)', color: 'var(--alert-red)', background: 'transparent' }}
+                      style={{ padding: '0.3rem 0.6rem', fontSize: '0.8rem', width: "stretch", whiteSpace: "nowrap", marginTop: 0, borderColor: 'var(--alert-red)', color: 'var(--alert-red)', background: 'transparent' }}
                     >
                       [ EXCLUIR ]
                     </button>
@@ -216,9 +217,10 @@ function Avistamentos() {
 
             <FormAvistamento
               modeEdit={modeEdit}
-              cadastrarAvistamento={salvarAvistamento} 
+              cadastrarAvistamento={salvarAvistamento}
               formAvistamento={formAvistamento}
               setFormAvistamento={setFormAvistamento}
+              fecharModal={() => setModalAberto(false)}
             />
           </div>
         </div>

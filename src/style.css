@@ -1,7 +1,7 @@
 /* --- 1. (VARIÁVEIS GLOBAIS) --- */
 :root {
-  --space-black: #050b14;       /* Fundo principal profundo */
-  --glass-bg: rgba(10, 17, 30, 0.65); /* Fundo translúcido para painéis */
+  --space-black: #07101c;       /* Fundo principal profundo */
+  --glass-bg: rgba(12, 21, 37, 0.65); /* Fundo translúcido para painéis */
   --neon-cyan: #00f0ff;         /* Cor primária holográfica */
   --neon-cyan-dim: rgba(0, 240, 255, 0.15);
   --neon-green: #39ff14;        /* Sucesso / Radar ativo */
