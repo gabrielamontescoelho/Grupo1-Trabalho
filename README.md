@@ -1,12 +1,32 @@
 # 🛸 Sistema de Monitoramento Extraterrestre E Diário de Avistamentos em React e Vite
 
+* Nosso Deploy do Trabalho Final em React + Vite: https://grupo1trabalho.netlify.app/
+
+🧑‍🚀 Membros da Equipe (Grupo 1)
+Nossa equipe de desenvolvedores operacionais que contribuíram para este projeto:
+
+| Foto | Usuário | Função (Exemplo) |
+| :---: | :--- | :--- |
+| <img src="https://github.com/leandrotcdev.png" width="60px;"/> | [**Leandro Coutinho**](https://github.com/leandrotcdev) | Fullstack Developer |
+| <img src="https://github.com/elisakappaun-netizen.png" width="60px;"/> | [**Elisa Kappaun**](https://github.com/elisakappaun-netizen) | Fullstack Developerr |
+| <img src="https://github.com/gabrielamontescoelho.png" width="60px;"/> | [**Gabriela Coelho**](https://github.com/gabrielamontescoelho) | Fullstack Developer |
+| <img src="https://github.com/filipebrollo.png" width="60px;"/> | [**Filipe Brollo**](https://github.com/filipebrollo) | Fullstack Developer |
+| <img src="https://github.com/nathaliaa-qa.png" width="60px;"/> | [**Nathália Antunes**](https://github.com/nathaliaa-qa) | Fullstack Developer |
+
+---
+
+* ===========================================================================================================================================
 [![React](https://img.shields.io/badge/React-v19-61DAFB?logo=react)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-v6-646CFF?logo=vite)](https://vite.dev)
 [![CSS3](https://img.shields.io/badge/CSS3-Pure--Vanilla-1572B6?logo=css3)](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
 [![Axios](https://img.shields.io/badge/Axios-HTTP-5A29E4?logo=axios)](https://axios-http.com/)
 [![Status](https://img.shields.io/badge/Status-Operacional-success)](#)
 
-> **Trabalho de Conclusão de Curso (TCC)  em React ** desenvolvido para a Residência em TIC Software do Serratec.
+* Autor: [Leandro Coutinho, Elisa Kappaun, Gabriela Coelho, Filipe Brollo e Nathália Antunes]
+* Data: 15/06/206
+* ===========================================================================================================================================
+
+> **Trabalho de Conclusão de Curso (TCC) em React ** desenvolvido para a Residência em TIC Software do Serratec.
 > Uma aplicação web SPA completa, projetada para o gerenciamento, catalogação e monitoramento de informações relacionadas a avistamentos, aliens e planetas através do consumo real da API do Swagger.
 
 ---
